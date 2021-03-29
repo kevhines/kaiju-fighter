@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+godzilla = Monster.create(name: "Godzilla")
+mothra = Monster.create(name: "Mothra")
+kingkong = Monster.create(name: "King Kong")
+rodan = Monster.create(name: "Rodan")
+behemoth = Monster.create(name: "Behemoth")
+
+
+ouch = Fight.create(challenger_id: 1, defender_id: 2)
+Fight.create(defender: behemoth, challenger: rodan)
+rodan.fights_challenged.build(defender_id: 3)
+rodan.fights_challenged.build(defender: behemoth)
