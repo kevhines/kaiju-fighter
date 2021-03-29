@@ -1,0 +1,9 @@
+
+<% if @monsters.nil? %>
+You have no Monsters!
+<% else %>
+<% @monsters.each do |monster| %>
+    <%=monster.name%><br />
+<% end %>
+<% end %>
+<br /><%=link_to "Add a New Monster", new_monster_path%>

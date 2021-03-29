@@ -1,0 +1,8 @@
+<%=@monster.name%>
+<br /><br />  
+<%=link_to "Start a Fight", new_monster_fight_path(@monster)%>
+<h2> Fights! </h2>
+
+<% @monster.all_fights && @monster.all_fights.each do |fight| %>
+    <%=fight.title%>: <%=fight.challenger.name%> vs  <%=fight.defender.name%><br /> 
+<% end %>
