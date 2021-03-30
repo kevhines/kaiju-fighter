@@ -1,7 +1,15 @@
-<%= form_for(@fight, url: monster_fights_path(@fight.challenger_id)) do |f| %>
+<%= form_for(@fight, url: monster_fights_path(@monster.id)) do |f| %>
     <%=f.label "Fight Title"%>
     <%=f.text_field(:title)%>
-    <%= f.collection_select :defender_id, @monsters, :id, :name %>
+    
+    <% if my_monster?(@monster) %>
+        <%=f.label "Defending Monster"%>
+        <%= f.collection_select :defender_id, @monsters, :id, :name %>
+    <% else %>
+        <%=f.label "Your Monster"%>
+        <%= f.collection_select :challenger_id, @monsters, :id, :name %>
+    <% end %>
+    
     <%=f.label "Location"%>
     <%= f.fields_for :location do |loc| %>
         <%= loc.text_field :name, list: "location_autocomplete" %>

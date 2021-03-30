@@ -1,16 +1,25 @@
 class FightsController < ApplicationController
 
     def new
-        monster = Monster.find_by(id: params[:monster_id])
-        #binding.pry
-        @fight = monster.fights_challenged.build
+        @monster = Monster.find_by(id: params[:monster_id])
+        if my_monster?(@monster) 
+            @fight = @monster.fights_challenged.build
+            @monsters = Monster.where("id != ?", @monster.id)
+        else
+            @fight = @monster.fights_defended.build
+            binding.pry
+            @monsters = Monster.where("user_id = ?", current_user.id)
+        end
         @fight.location = Location.new
-        @monsters = Monster.where("id != ?", monster.id)
     end
 
     def create
         monster = Monster.find_by(id: params[:monster_id])
-        fight = monster.fights_challenged.build(fight_params)
+        if my_monster?(monster) 
+            fight = monster.fights_challenged.build(fight_params)
+        else
+            fight = monster.fights_defended.build(fight_params)
+        end
        #fight = Fight.new(fight_params)
        # binding.pry
         fight.save
@@ -20,6 +29,6 @@ class FightsController < ApplicationController
     private
 
     def fight_params
-        params.require(:fight).permit(:title, :defender_id, location_attributes: [:name])
+        params.require(:fight).permit(:title, :defender_id, :challenger_id, location_attributes: [:name])
     end
 end
