@@ -22,8 +22,12 @@ class FightsController < ApplicationController
         end
        #fight = Fight.new(fight_params)
        # binding.pry
-        fight.save
-        redirect_to monster_path(monster)
+        if fight.save
+            redirect_to monster_path(monster)
+        else
+            #@errors = fight.errors.full_messages
+            redirect_to new_monster_fight_path(monster), alert: fight.errors.full_messages
+        end
     end
 
     private

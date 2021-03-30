@@ -1,3 +1,11 @@
+
+<% if flash[:alert] %>
+
+
+<p><%= flash[:alert] %></p>
+
+<% end %>
+
 <%= form_for(@fight, url: monster_fights_path(@monster.id)) do |f| %>
     <%=f.label "Fight Title"%>
     <%=f.text_field(:title)%>
@@ -9,7 +17,7 @@
         <%=f.label "Your Monster"%>
         <%= f.collection_select :challenger_id, @monsters, :id, :name %>
     <% end %>
-    
+
     <%=f.label "Location"%>
     <%= f.fields_for :location do |loc| %>
         <%= loc.text_field :name, list: "location_autocomplete" %>
