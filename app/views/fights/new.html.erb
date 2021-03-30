@@ -2,5 +2,14 @@
     <%=f.label "Fight Title"%>
     <%=f.text_field(:title)%>
     <%= f.collection_select :defender_id, @monsters, :id, :name %>
+    <%=f.label "Location"%>
+    <%= f.fields_for :location do |loc| %>
+        <%= loc.text_field :name, list: "location_autocomplete" %>
+        <datalist id="location_autocomplete">
+            <% Location.all.each do |location| %>
+                <option value="<%= location.name %>">
+            <%end%>
+        </datalist>
+    <% end %>
     <%=f.submit%>
 <%end%>

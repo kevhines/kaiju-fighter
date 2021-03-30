@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :locations
   root 'static#home'
 
   resources :users, only: [:show]

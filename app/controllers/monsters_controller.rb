@@ -5,7 +5,7 @@ class MonstersController < ApplicationController
     end
 
     def new
-        @monster = current_user.monsters.build
+        @monster = Monster.new
     end
 
     def show
