@@ -1,6 +1,10 @@
 <h1><%=@monster.name%></h1>
 <br /><br />  
-<%=link_to "Start a Fight", new_monster_fight_path(@monster)%>
+<% if my_monster?(@monster) %>
+    <%=link_to "Start a Fight for your Monster", new_monster_fight_path(@monster)%>
+<%else%>
+    <%=link_to "Challenge This Monster to a Fight", new_monster_fight_path(@monster)%>
+<%end%>
 <h2> Fights! </h2>
 
 <% @monster.all_fights && @monster.all_fights.each do |fight| %>
