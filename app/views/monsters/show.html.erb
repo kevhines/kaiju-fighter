@@ -1,7 +1,9 @@
 <h2><%=@monster.name%></h2>
 <br /><br />  
+Health: <%=@monster.health%><br />
+Size: <%=@monster.size%> Stories Tall<br />
 <% if my_monster?(@monster) %>
-<%=link_to "Edit your Monster's Name", edit_monster_path(@monster)%><br />
+    <%=link_to "Edit your Monster", edit_monster_path(@monster)%><br />
     <%=link_to "Start a Fight for your Monster", new_monster_fight_path(@monster)%>
 <%else%>
     <%=link_to "Challenge This Monster to a Fight", new_monster_fight_path(@monster)%>

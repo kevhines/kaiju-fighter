@@ -5,5 +5,7 @@
 <%= form_for(@monster) do |f| %>
     <%=f.label "Monster Name"%>
     <%=f.text_field(:name)%>
+    <%=f.label "Size (in Stories)"%>
+    <%=f.text_field(:size)%>
     <%=f.submit%>
 <%end%>
