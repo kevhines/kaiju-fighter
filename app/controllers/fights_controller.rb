@@ -7,7 +7,7 @@ class FightsController < ApplicationController
             @monsters = Monster.where("id != ?", @monster.id)
         else
             @fight = @monster.fights_defended.build
-            binding.pry
+            #binding.pry
             @monsters = Monster.where("user_id = ?", current_user.id)
         end
         @fight.location = Location.new
