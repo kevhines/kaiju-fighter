@@ -1,0 +1,8 @@
+<% if flash[:alert] %>
+<p><%= flash[:alert] %></p>
+<% end %>
+<%= form_for(@location) do |f| %>
+    <%=f.label "Location Name"%>
+    <%=f.text_field(:name)%>
+    <%=f.submit%>
+<%end%>

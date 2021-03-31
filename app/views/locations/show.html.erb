@@ -1,3 +1,4 @@
 <h1><%=@location.name%></h1>
+<%=link_to "Edit Location Name", edit_location_path(@location)%><br />
 <br />
 <%= render partial: "fights/fight_list", locals: {fights: @location.fights} %>
