@@ -1,3 +1,4 @@
 <% fights && fights.each do |go| %>
     <%=go.title%>: <%=go.challenger.name%> vs  <%=go.defender.name%><br /> 
+    Winner: <%=go.winner_name%><br /> 
 <% end %>
