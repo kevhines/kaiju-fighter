@@ -13,7 +13,7 @@
   <div class="container">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
   <%if current_user %>
-    <%=link_to "User Home Page", user_path(current_user.id), class: "nav-link" %> |
+    <%=link_to "#{current_user.username} (Home Page)", user_path(current_user.id), class: "nav-link" %> |
     <%=link_to "All Monsters", monsters_path, class: "nav-link" %> |
     <%=button_to "Log Out", logout_path, method: :post, class: 'btn btn-link'%>
   <%else%>
