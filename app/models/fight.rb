@@ -14,16 +14,20 @@ class Fight < ApplicationRecord
     def attack
         if rand(2)
             self.winner = self.challenger_id
+            loser = self.defender.id
         else
             self.winner = self.defender_id
+            loser = self.challenger_id.id
         end
         self.save
+        Monster.health_change(winner: self.winner, loser: loser)
     end
 
     def winner_name
         monster = Monster.find_by_id(self.winner)
         !!monster ? monster.name : "Draw!"
     end
+
 
 
 
