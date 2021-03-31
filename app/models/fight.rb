@@ -13,16 +13,15 @@ class Fight < ApplicationRecord
 
     def attack
         if rand(2) == 1
-           # binding.pry
             self.winner = self.challenger_id
             loser = self.defender.id
         else
             self.winner = self.defender_id
             loser = self.challenger.id
         end
-       # binding.pry
         self.save
         Monster.health_change(winner: self.winner, loser: loser)
+        Location.health_change(battle_site: self.location_id)
     end
 
     def winner_name
