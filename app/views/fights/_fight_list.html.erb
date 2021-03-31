@@ -1,4 +1,9 @@
+<ul class="list-unstyled">
 <% fights && fights.each do |go| %>
-    <%=go.title%>: <%=go.challenger.name%> vs  <%=go.defender.name%><br /> 
-    Winner: <%=go.winner_name%><br /> 
+    <li><strong><%=go.title%>:</strong> <%=go.challenger.name%> vs  <%=go.defender.name%> <em>in <%=go.location.name%></em></li> 
+    <li><strong>Winner:</strong> <%=go.winner_name%></li> 
 <% end %>
+</ul>
+
+
+

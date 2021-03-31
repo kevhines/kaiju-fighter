@@ -1,11 +1,21 @@
 <% if flash[:alert] %>
-<p><%= flash[:alert] %></p>
+<% flash[:alert].each do |error| %>
+<div class="alert alert-primary" role="alert"><%= error %></div>
 <% end %>
-
+<% end %>
+<div class = "row">
 <%= form_for(@monster) do |f| %>
+    <div class="col-6">
+    <div class="mb-3">
     <%=f.label "Monster Name"%>
     <%=f.text_field(:name)%>
+    </div>
+    <div class="mb-3">
     <%=f.label "Size (in Stories)"%>
     <%=f.text_field(:size)%>
-    <%=f.submit%>
+    <div id="sizelHelp" class="form-text">Size must be between 5 and 80 stories</div>
+    </div>
+    <%=f.submit class: "btn btn-primary"%>
+    </div>
 <%end%>
+</div>

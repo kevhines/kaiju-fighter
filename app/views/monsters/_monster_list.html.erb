@@ -1,3 +1,6 @@
+<ul class="list-unstyled">
+<li><strong><u>Name (current health)</u></strong></li>
 <%@monsters.each do |monster| %>
-    <%=link_to monster.name, monster_path(monster) %> (<%=monster.health%>)<br />
+    <li><%=link_to monster.name, monster_path(monster) %> (<%=monster.health%>)</li>
 <%end%>
+</ul>
