@@ -15,16 +15,27 @@
   <ul class="navbar-nav">
   <%if current_user %>
   <li class="nav-item"><%=link_to "#{current_user.username} (Home Page)", user_path(current_user.id), class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "All Monsters", monsters_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "All Locations", locations_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Fight Results", standings_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Healthiest Monster", strongest_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Most Destroyed Locations", wrecked_path, class: "nav-link" %></li>
+  <li class="nav-item dropdown">
+  <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Lists</a>
+ <ul class="dropdown-menu">
+   <li><%=link_to "All Monsters", monsters_path, class: "nav-link" %></li>
+   <li><%=link_to "All Locations", locations_path, class: "nav-link" %></li>
+ </ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Stats</a>
+<ul class="dropdown-menu">
+ <li><%=link_to "Healthiest Monster", strongest_path, class: "nav-link" %></li>
+ <li><%=link_to "Most Destroyed Locations", wrecked_path, class: "nav-link" %></li>
+</ul>
+</li>
+  <li class="nav-item"><%=link_to "Standings", standings_path, class: "nav-link" %></li>
   <li class="nav-item"><%=button_to "Log Out", logout_path, method: :post, class: 'btn btn-link'%></li>
   <%else%>
   <li class="nav-item"><%=link_to "Sign Up", signup_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "Log In", login_path, class: "nav-link" %></li>
   <%end%>
+
   </ul>
   </nav>
   <br />
