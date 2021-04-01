@@ -1,5 +1,7 @@
 class FightsController < ApplicationController
 
+    before_action :require_login
+
     def new
         @monster = Monster.find_by(id: params[:monster_id])
         if my_monster?(@monster) 

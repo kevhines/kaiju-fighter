@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, only: [:show]
+
     def new
         @user = User.new
     end
@@ -17,16 +19,11 @@ class UsersController < ApplicationController
     end
 
     def show
-    # binding.pry
-      if current_user
         if params[:id].to_i == current_user.id
           @monsters = Monster.where("user_id = ?", current_user.id)
         else
           redirect_to user_path(current_user)
         end
-      else
-        redirect_to login_path
-      end
     end
 
 

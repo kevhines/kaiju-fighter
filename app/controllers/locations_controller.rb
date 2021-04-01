@@ -1,20 +1,20 @@
 class LocationsController < ApplicationController
 
+    before_action :set_location, except: [:index, :wrecked]
+    before_action :require_login
+
     def index
         @locations = Location.all
     end
 
     def show
-        @location = Location.find_by(id: params[:id])
     end
 
     def edit
-        @location = Location.find_by(id: params[:id])
     end
 
     def update
-        location = Location.find_by(id: params[:id])
-        if location.update(location_params)
+       if location.update(location_params)
             redirect_to location_path(location)
         else
             redirect_to edit_location_path(location), alert: location.errors.full_messages
@@ -30,5 +30,8 @@ class LocationsController < ApplicationController
         params.require(:location).permit(:name)
     end
 
+    def set_location
+        @location = Location.find_by(id: params[:id])
+     end
 
 end

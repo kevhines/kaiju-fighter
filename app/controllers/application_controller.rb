@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     def my_monster?(monster)
         monster.user_id == current_user.id
     end
+
+    def require_login
+        redirect_to '/login' if !current_user
+    end
 end

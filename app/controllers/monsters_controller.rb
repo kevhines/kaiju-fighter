@@ -1,5 +1,8 @@
 class MonstersController < ApplicationController
 
+    before_action(:set_monster, only: [:edit, :update, :show])
+    before_action :require_login
+
     def index
         @monsters = Monster.all
     end
@@ -9,7 +12,6 @@ class MonstersController < ApplicationController
     end
 
     def show
-        @monster = Monster.find_by(id: params[:id])
     end
 
 
@@ -24,7 +26,7 @@ class MonstersController < ApplicationController
     end
 
     def update
-        monster = Monster.find_by(id: params[:id])
+
         if monster.update(monster_params)
             redirect_to user_path(current_user)
         else
@@ -33,7 +35,6 @@ class MonstersController < ApplicationController
     end
 
     def edit
-        @monster = Monster.find_by(id: params[:id])
     end
 
     def standings
@@ -50,4 +51,7 @@ class MonstersController < ApplicationController
         params.require(:monster).permit(:name, :size)
     end
 
+    def set_monster
+        @monster = Monster.find_by(id: params[:id])
+     end
 end
