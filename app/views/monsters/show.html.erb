@@ -5,7 +5,7 @@
 </div>
 <div class="row">
     <div class="col-1"></div>
-    <div class="col-2 border">
+    <div class="col-3 border">
     <strong>Health:</strong> <%=@monster.health%><br />
     <strong>Size:</strong> <%=@monster.size%> Stories Tall<br />
     </div>
@@ -15,13 +15,14 @@
     <% if my_monster?(@monster) %>
         <div class="col-3"><%=link_to "Edit your Monster", edit_monster_path(@monster), class: "btn btn-primary text-nowrap"%></div>
         <div class="col-3"><%=link_to "Find a Fight for #{@monster.name}", new_monster_fight_path(@monster), class: "btn btn-primary text-nowrap"%></div>
+        <div class="col-3"></div>
     <%else%>
         <div class="col-3"><%=link_to "Challenge #{@monster.name} to a Fight", new_monster_fight_path(@monster), class: "btn btn-primary text-nowrap"%></div>
         <div class="col-3"></div>
     <%end%>
 </div>
 <br />
-<div class="row"> <div class="col-5">
+<div class="row"> <div class="col-6">
 <h4><u>Fights!</u></h4>
 <%= render partial: "fights/fight_list", locals: {fights: @monster.all_fights} %>
 </div></div>

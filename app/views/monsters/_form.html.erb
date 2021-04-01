@@ -1,8 +1,4 @@
-<% if flash[:alert] %>
-<% flash[:alert].each do |error| %>
-<div class="alert alert-primary" role="alert"><%= error %></div>
-<% end %>
-<% end %>
+<%=render "application/flash"%>
 <div class = "row">
 <%= form_for(@monster) do |f| %>
     <div class="col-6">
