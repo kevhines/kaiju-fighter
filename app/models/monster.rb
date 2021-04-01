@@ -13,6 +13,18 @@ class Monster < ApplicationRecord
         self.fights_challenged + self.fights_defended
     end
 
+    def wins
+        self.all_fights.count{ |w| w.winner == self.id }
+    end
+
+    def losses
+        self.all_fights.count{ |w| w.winner != self.id }
+    end
+
+    def win_percentage
+        percentage = (self.wins.to_f/self.all_fights.count.to_f)
+    end
+
     
     def self.health_change(winner:, loser:)
         self.all.each do |monster|

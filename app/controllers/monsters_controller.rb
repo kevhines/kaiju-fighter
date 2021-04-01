@@ -36,6 +36,10 @@ class MonstersController < ApplicationController
         @monster = Monster.find_by(id: params[:id])
     end
 
+    def standings
+        @monsters = Monster.all
+    end
+
     private
    
     def monster_params

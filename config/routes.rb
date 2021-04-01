@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :fights
   end
 
+  #non-standard routes
+  get '/standings', to: "monsters#standings", as: "standings"
+
   #sign up and log in routes
   get '/signup', to: "users#new", as: "signup"
   post '/signup', to: "users#create"

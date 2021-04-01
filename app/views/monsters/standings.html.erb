@@ -1,0 +1,21 @@
+<h2>Kaiju Standings</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rank</th>
+      <th scope="col">Name</th>
+      <th scope="col">W-L</th>
+      <th scope="col">Win Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @monsters.each.with_index do |monster, i| %>
+    <tr>
+      <th scope="row"><%=(i+1)%></th>
+      <td><%=monster.name%></td>
+      <td><%="#{monster.wins} - #{monster.losses}"%></td>
+      <td><%=monster.win_percentage%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>

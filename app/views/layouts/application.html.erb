@@ -17,7 +17,7 @@
   <li class="nav-item"><%=link_to "#{current_user.username} (Home Page)", user_path(current_user.id), class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "All Monsters", monsters_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "All Locations", locations_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Fight Results", root_path, class: "nav-link" %></li>
+  <li class="nav-item"><%=link_to "Fight Results", standings_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "Healthiest Monster", root_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "Most Destroyed Locations", root_path, class: "nav-link" %></li>
   <li class="nav-item"><%=button_to "Log Out", logout_path, method: :post, class: 'btn btn-link'%></li>
