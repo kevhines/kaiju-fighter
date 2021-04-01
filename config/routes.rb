@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :locations
+  resources :locations, except: [:create, :new, :destroy]
   root 'static#home'
 
   resources :users, only: [:show]
-  #resources :fights
-  resources(:monsters) do
-    resources :fights
+  resources(:monsters, except: [:destroy]) do
+    resources :fights, only: [:create, :new]
   end
 
   #non-standard routes
