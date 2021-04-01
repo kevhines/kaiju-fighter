@@ -4,7 +4,6 @@
     </div>
 </div>
 <div class="row">
-
     <div class="col-1"></div>
     <div class="col-2 border">
     <strong>Health:</strong> <%=@monster.health%><br />
@@ -23,6 +22,6 @@
 </div>
 <br />
 <div class="row"> <div class="col-5">
-<h4> Fights! </h4>
+<h4><u>Fights!</u></h4>
 <%= render partial: "fights/fight_list", locals: {fights: @monster.all_fights} %>
 </div></div>

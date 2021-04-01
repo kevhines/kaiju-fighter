@@ -1,3 +1,7 @@
+<h2>All Locations</h2>
+<ul class="list-unstyled">
+<li><strong><u>Name (current health)</u></strong></li>
 <%@locations.each do |location| %>
-    <%=link_to location.name, location_path(location) %> (<%=location.health%>)<br />
+    <li><%=link_to location.name, location_path(location) %> (<%=location.health%>)</li>
 <%end%>
+<ul>

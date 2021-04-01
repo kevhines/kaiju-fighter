@@ -1,15 +1,17 @@
-
 <% if flash[:alert] %>
-
-
-<p><%= flash[:alert] %></p>
-
+<% flash[:alert].each do |error| %>
+<div class="alert alert-primary" role="alert"><%= error %></div>
 <% end %>
-
+<% end %>
+<h2>Create a Fight!</h2>
+<div class = "row">
 <%= form_for(@fight, url: monster_fights_path(@monster.id)) do |f| %>
+    <div class="col-6">
+    <div class="mb-3">
     <%=f.label "Fight Title"%>
     <%=f.text_field(:title)%>
-    
+    </div>
+    <div class="mb-3">
     <% if my_monster?(@monster) %>
         <%=f.label "Defending Monster"%>
         <%= f.collection_select :defender_id, @monsters, :id, :name %>
@@ -17,7 +19,8 @@
         <%=f.label "Your Monster"%>
         <%= f.collection_select :challenger_id, @monsters, :id, :name %>
     <% end %>
-
+    </div>
+    <div class="mb-3">
     <%=f.label "Location"%>
     <%= f.fields_for :location do |loc| %>
         <%= loc.text_field :name, list: "location_autocomplete" %>
@@ -27,5 +30,8 @@
             <%end%>
         </datalist>
     <% end %>
-    <%=f.submit%>
+    </div>
+    <%=f.submit class: "btn btn-primary"%>
+    </div>
 <%end%>
+</div>

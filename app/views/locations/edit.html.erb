@@ -1,8 +1,17 @@
 <% if flash[:alert] %>
-<p><%= flash[:alert] %></p>
+<% flash[:alert].each do |error| %>
+<div class="alert alert-primary" role="alert"><%= error %></div>
 <% end %>
+<% end %>
+<h2>Edit Location</h2>
+<div class = "row">
 <%= form_for(@location) do |f| %>
+    <div class="col-6">
+    <div class="mb-3">
     <%=f.label "Location Name"%>
     <%=f.text_field(:name)%>
-    <%=f.submit%>
+    </div>
+    <%=f.submit class: "btn btn-primary"%>
+    </div>
 <%end%>
+</div>
