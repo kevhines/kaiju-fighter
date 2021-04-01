@@ -9,7 +9,6 @@ class FightsController < ApplicationController
             @monsters = Monster.where("id != ?", @monster.id)
         else
             @fight = @monster.fights_defended.build
-            #binding.pry
             @monsters = Monster.where("user_id = ?", current_user.id)
         end
         @fight.location = Location.new
@@ -22,14 +21,11 @@ class FightsController < ApplicationController
         else
             fight = monster.fights_defended.build(fight_params)
         end
-       #fight = Fight.new(fight_params)
-       # binding.pry
         if fight.save
             fight.attack
             fight.save
             redirect_to monster_path(monster)
         else
-            #@errors = fight.errors.full_messages
             redirect_to new_monster_fight_path(monster), alert: fight.errors.full_messages
         end
     end
@@ -39,4 +35,5 @@ class FightsController < ApplicationController
     def fight_params
         params.require(:fight).permit(:title, :defender_id, :challenger_id, location_attributes: [:name])
     end
+
 end

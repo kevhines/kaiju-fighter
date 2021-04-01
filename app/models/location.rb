@@ -23,7 +23,4 @@ class Location < ApplicationRecord
         end
     end
 
-    # def self.wrecked
-    #     all.select { |m| m.health < 25 }.sort_by {|m| m.health }
-    # end
 end

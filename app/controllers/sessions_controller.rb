@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
         end
     end  
 
-
   def createfb
     user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
       u.password = 'temp_password'
@@ -29,9 +28,7 @@ class SessionsController < ApplicationController
     else
       redirect_to signup_path
     end
-
   end
-
 
   def destroy
       session.clear

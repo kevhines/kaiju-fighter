@@ -41,11 +41,6 @@ class Monster < ApplicationRecord
     def self.monster_ranked
         self.all.sort_by { |m| m.win_percentage}.reverse
     end
-
-    # def self.strongest
-    #     all.select { |m| m.health > 80 }.sort_by {|m| m.health }.reverse
-    # end
-
     
     def self.health_change(winner:, loser:)
         self.all.each do |monster|

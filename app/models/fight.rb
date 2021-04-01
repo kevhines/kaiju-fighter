@@ -6,7 +6,6 @@ class Fight < ApplicationRecord
    
 
     def location_attributes=(arg)
-        #binding.pry
         arg[:name] = arg[:name].titlecase
         self.location = Location.find_or_create_by(arg)
     end
