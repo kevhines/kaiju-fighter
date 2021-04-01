@@ -2,6 +2,8 @@ class Location < ApplicationRecord
     has_many :fights
    
     validates :name, presence: true, uniqueness: { case_sensitive: false }
+
+    scope :wrecked, -> { where("health <= 20") }
     
     def make_name_titlecase
         self.name = self.name.titlecase
@@ -20,7 +22,7 @@ class Location < ApplicationRecord
         end
     end
 
-    def self.wrecked
-        all.select { |m| m.health < 25 }.sort_by {|m| m.health }
-    end
+    # def self.wrecked
+    #     all.select { |m| m.health < 25 }.sort_by {|m| m.health }
+    # end
 end

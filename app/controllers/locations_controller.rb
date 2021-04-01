@@ -22,7 +22,7 @@ class LocationsController < ApplicationController
     end
 
     def wrecked
-        @locations = Location.wrecked
+        @locations = Location.wrecked.sort_by { |l| l.health }
     end
 
     private

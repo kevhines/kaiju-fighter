@@ -41,7 +41,7 @@ class MonstersController < ApplicationController
     end
 
     def strongest
-        @monsters = Monster.strongest
+        @monsters = Monster.strongest.sort_by { |m| m.health }.reverse
     end
 
     private

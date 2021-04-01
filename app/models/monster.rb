@@ -8,6 +8,8 @@ class Monster < ApplicationRecord
     has_many :challengers, through: :fights_defended
 
     validates :name, presence: true
+    scope :strongest, -> { where("health >= 80") }
+
 
     before_save :size_check
 
@@ -42,9 +44,9 @@ class Monster < ApplicationRecord
         self.all.sort_by { |m| m.win_percentage}.reverse
     end
 
-    def self.strongest
-        all.select { |m| m.health > 80 }.sort_by {|m| m.health }.reverse
-    end
+    # def self.strongest
+    #     all.select { |m| m.health > 80 }.sort_by {|m| m.health }.reverse
+    # end
 
     
     def self.health_change(winner:, loser:)
