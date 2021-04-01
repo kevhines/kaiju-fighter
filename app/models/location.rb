@@ -4,6 +4,7 @@ class Location < ApplicationRecord
     validates :name, presence: true, uniqueness: { case_sensitive: false }
 
     scope :wrecked, -> { where("health <= 20") }
+    scope :weak_to_strong, -> { order('health')}
     
     def make_name_titlecase
         self.name = self.name.titlecase

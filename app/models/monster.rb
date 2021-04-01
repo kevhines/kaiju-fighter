@@ -8,10 +8,11 @@ class Monster < ApplicationRecord
     has_many :challengers, through: :fights_defended
 
     validates :name, presence: true
-    scope :strongest, -> { where("health >= 80") }
-
 
     before_save :size_check
+
+    scope :strongest, -> { where("health >= 80") }
+    scope :strong_to_weak, -> { order('health DESC')}
 
     def size_check
         if self.size < 5
@@ -34,10 +35,7 @@ class Monster < ApplicationRecord
     end
 
     def win_percentage
-        percentage = (self.wins.to_f/self.all_fights.count.to_f)
-        string_percentage = sprintf('%.3f', percentage.round(3)) 
-        string_percentage.slice!(0) if string_percentage[0] == "0" 
-        string_percentage
+        self.all_fights.count == 0 ? 0 : (self.wins.to_f/self.all_fights.count.to_f)
     end
 
     def self.monster_ranked

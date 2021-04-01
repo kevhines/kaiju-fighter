@@ -14,7 +14,7 @@
       <th scope="row"><%=(i+1)%></th>
       <td><%=monster.name%></td>
       <td><%="#{monster.wins} - #{monster.losses}"%></td>
-      <td><%=monster.win_percentage%></td>
+      <td><%=display_percentage monster%></td>
     </tr>
     <%end%>
   </tbody>

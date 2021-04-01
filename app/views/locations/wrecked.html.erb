@@ -1,6 +1,6 @@
 <h3>Locations That Are Currently Wrecked</h3>
 <ul class="list-unstyled">
-<% if @locations %>
+<% if !@locations.empty? %>
     <li><strong><u>Name (current health)</u></strong></li>
     <% @locations.each do |location| %>
         <li><%=location.name%> (<%=location.health%>)</li>
