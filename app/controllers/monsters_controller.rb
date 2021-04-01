@@ -37,7 +37,11 @@ class MonstersController < ApplicationController
     end
 
     def standings
-        @monsters = Monster.all
+        @monsters = Monster.monster_ranked
+    end
+
+    def strongest
+        @monsters = Monster.strongest
     end
 
     private

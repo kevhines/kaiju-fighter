@@ -18,8 +18,8 @@
   <li class="nav-item"><%=link_to "All Monsters", monsters_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "All Locations", locations_path, class: "nav-link" %></li>
   <li class="nav-item"><%=link_to "Fight Results", standings_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Healthiest Monster", root_path, class: "nav-link" %></li>
-  <li class="nav-item"><%=link_to "Most Destroyed Locations", root_path, class: "nav-link" %></li>
+  <li class="nav-item"><%=link_to "Healthiest Monster", strongest_path, class: "nav-link" %></li>
+  <li class="nav-item"><%=link_to "Most Destroyed Locations", wrecked_path, class: "nav-link" %></li>
   <li class="nav-item"><%=button_to "Log Out", logout_path, method: :post, class: 'btn btn-link'%></li>
   <%else%>
   <li class="nav-item"><%=link_to "Sign Up", signup_path, class: "nav-link" %></li>

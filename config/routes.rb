@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   #non-standard routes
   get '/standings', to: "monsters#standings", as: "standings"
+  get '/strongest', to: "monsters#strongest", as: "strongest"
+  get '/wrecked', to: "locations#wrecked", as: "wrecked"
 
   #sign up and log in routes
   get '/signup', to: "users#new", as: "signup"

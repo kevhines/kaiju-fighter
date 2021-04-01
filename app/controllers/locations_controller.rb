@@ -21,6 +21,10 @@ class LocationsController < ApplicationController
         end
     end
 
+    def wrecked
+        @locations = Location.wrecked
+    end
+
     private
     def location_params
         params.require(:location).permit(:name)

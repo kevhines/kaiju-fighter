@@ -1,0 +1,12 @@
+<h3>Monsters That Are Currently Healthy!</h3>
+<ul class="list-unstyled">
+
+<% if !@monsters.empty? %>
+    <li><strong><u>Name (current health)</u></strong></li>
+    <% @monsters.each do |monster| %>
+        <li><%=monster.name%> (<%=monster.health%>)</li>
+    <%end%>
+<% else %>
+    All Kaiju Are Pretty Hurt!
+<% end %>
+</ul>

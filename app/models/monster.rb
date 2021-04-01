@@ -9,6 +9,16 @@ class Monster < ApplicationRecord
 
     validates :name, presence: true
 
+    before_save :size_check
+
+    def size_check
+        if self.size < 5
+            self.size = 5
+        elsif self.size > 80
+            self.size = 80
+        end
+    end
+
     def all_fights
         self.fights_challenged + self.fights_defended
     end
@@ -23,6 +33,17 @@ class Monster < ApplicationRecord
 
     def win_percentage
         percentage = (self.wins.to_f/self.all_fights.count.to_f)
+        string_percentage = sprintf('%.3f', percentage.round(3)) 
+        string_percentage.slice!(0) if string_percentage[0] == "0" 
+        string_percentage
+    end
+
+    def self.monster_ranked
+        self.all.sort_by { |m| m.win_percentage}.reverse
+    end
+
+    def self.strongest
+        all.select { |m| m.health > 80 }.sort_by {|m| m.health }.reverse
     end
 
     
