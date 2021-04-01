@@ -1,14 +1,25 @@
 <%=render(partial: "application/errors", locals: {errors: @errors})%>
 
-<h1>Sign Up</h1>
+<h2>Sign Up</h2>
+<div class = "row">
 <%= form_for @user, url: signup_path do |f| %>
+  <div class="col">
+  <div class="mb-3">
   <%=f.label "Username"%>
-  <%=f.text_field :username%><br />
+  <%=f.text_field :username%>
+  </div>
+  <div class="mb-3">
   <%=f.label "Password"%>
-  <%=f.password_field :password %><br />
+  <%=f.password_field :password %>
+  </div>
+  <div class="mb-3">
   <%=f.label "Password Confirmation"%>
-  <%=f.password_field :password_confirmation %><br />
-  <%=f.submit "Sign Up"%>
-<%end%>
+  <%=f.password_field :password_confirmation %>
+  </div>
+  <%=f.submit "Sign Up", class: "btn btn-primary"%>
+  </div>
+  <%end%>
+  </div>
+  <br />
 
 <%= link_to "Sign Up With Facebook", 'auth/facebook' %>

@@ -1,12 +1,20 @@
 <%=render(partial: "application/errors", locals: {errors: @errors})%>
 
-<h1>Log In</h1>
-
+<h2>Log In</h2>
+<div class = "row">
 <%= form_for :user do |f|%>
+  <div class="col-6">
+  <div class="mb-3">
   <%=f.label "Username" %>
-  <%=f.text_field :username%><br />
+  <%=f.text_field :username%>
+  </div>
+  <div class="mb-3">
   <%=f.label "Password"%>
-  <%=f.password_field :password %><br />
-  <%=f.submit "Log In" %>
-<%end%>
+  <%=f.password_field :password %>
+  </div>
+  <%=f.submit "Log In", class: "btn btn-primary" %>
+  </div>
+  <%end%>
+  </div>
+  <br />
 <%= link_to "Log In With Facebook", 'auth/facebook' %>
