@@ -8,7 +8,7 @@
 </thead>
 <tbody>
 <%@users.each do |user| %>
-    <tr><td><%=link_to "#{user.username}'s Monsters", user_monsters_path(user) %></td><td><%=user.monsters.count%></td></tr>
+    <tr><td><%=display_username user%></td><td><%= %><%=link_to "#{user.monsters.count} Monsters", user_monsters_path(user) %></td></tr>
 <%end%>
 </tbody>
 </table>
