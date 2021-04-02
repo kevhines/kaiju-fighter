@@ -37,7 +37,7 @@ class MonstersController < ApplicationController
             redirect_to user_path(current_user)
         else
             flash[:alert] = @monster.errors.full_messages
-            render :new
+            render :edit
         end
     end
 

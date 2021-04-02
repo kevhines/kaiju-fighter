@@ -14,10 +14,11 @@ class LocationsController < ApplicationController
     end
 
     def update
-       if location.update(location_params)
-            redirect_to location_path(location)
+       if @location.update(location_params)
+            redirect_to location_path(@location)
         else
-            redirect_to edit_location_path(location), alert: location.errors.full_messages
+            flash[:alert] = @location.errors.full_messages
+            render :edit
         end
     end
 
