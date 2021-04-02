@@ -4,7 +4,12 @@ class MonstersController < ApplicationController
     before_action :require_login
 
     def index
-        @monsters = Monster.all
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            @monsters = user.monsters
+        else
+            @monsters = Monster.all
+        end
     end
 
     def new

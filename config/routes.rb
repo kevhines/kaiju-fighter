@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'static#home'
 
   resources :fights, only: [:index]
-  resources :users, only: [:show]
+  resources(:users, only: [:index]) do
+    resources :monsters, only: [:index]
+  end
   resources(:monsters, except: [:destroy]) do
     resources :fights, only: [:create, :new]
   end

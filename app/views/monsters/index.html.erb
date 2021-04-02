@@ -1,2 +1,16 @@
-<h2>All Monsters</h2>
-<%= render 'monster_list' %>
+<div class="row">
+<div class="col-6"><h2>Monster List</h2></div>
+</div><div class="row">
+<div class="col-1"></div>
+<div class="col-3"><%=link_to "Add a New Monster", new_monster_path,  class: "btn btn-primary"%></div>
+<div class="col"></div>
+</div>
+<br />
+
+<% if @monsters.empty? %>
+You have no Monsters!
+<% else %>
+<%= render '/monsters/monster_list' %>
+<% end %>
+</div>
+<br />

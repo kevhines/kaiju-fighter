@@ -1,0 +1,14 @@
+<h2>All Users</h2>
+<table class="table table-borderless table-sm table-nonfluid">
+<thead>
+<tr>
+  <th scope="col">User Name</th>
+  <th scope="col"># of Monsters</th>
+</tr>
+</thead>
+<tbody>
+<%@users.each do |user| %>
+    <tr><td><%=link_to "#{user.username}'s Monsters", user_monsters_path(user) %></td><td><%=user.monsters.count%></td></tr>
+<%end%>
+</tbody>
+</table>

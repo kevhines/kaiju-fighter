@@ -18,13 +18,9 @@ class UsersController < ApplicationController
         end
     end
 
-    def show
-        if params[:id].to_i == current_user.id
-          @monsters = Monster.where("user_id = ?", current_user.id)
-        else
-          redirect_to user_path(current_user)
-        end
-    end
+      def index
+        @users = User.all
+      end
 
 
     private
