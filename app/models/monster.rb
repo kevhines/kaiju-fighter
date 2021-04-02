@@ -14,6 +14,7 @@ class Monster < ApplicationRecord
 
     scope :strongest, -> { where("health >= 70") }
     scope :strong_to_weak, -> { order('health DESC')}
+    scope :others, -> (monster_id) { where("id != ?", monster_id)}
 
     def size_check
         if self.size < 5

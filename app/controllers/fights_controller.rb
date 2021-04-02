@@ -9,10 +9,10 @@ class FightsController < ApplicationController
         @monster = Monster.find_by(id: params[:monster_id])
         if my_monster?(@monster) 
             @fight = @monster.fights_challenged.build
-            @monsters = Monster.where("id != ?", @monster.id)
+            @monsters = Monster.others(@monster.id)
         else
             @fight = @monster.fights_defended.build
-            @monsters = Monster.where("user_id = ?", current_user.id)
+            @monsters = current_user.monsters
         end
         @fight.location = Location.new
     end
@@ -21,10 +21,10 @@ class FightsController < ApplicationController
         @monster = Monster.find_by(id: params[:monster_id])
         if my_monster?(@monster) 
             @fight = @monster.fights_challenged.build(fight_params)
-            @monsters = Monster.where("id != ?", @monster.id)
+            @monsters = Monster.others(@monster.id)
         else
             @fight = @monster.fights_defended.build(fight_params)
-            @monsters = Monster.where("user_id = ?", current_user.id)
+            @monsters = current_user.monsters
         end
         if @fight.save
             @fight.attack
@@ -33,7 +33,6 @@ class FightsController < ApplicationController
         else
             flash[:alert] = @fight.errors.full_messages
             render :new
-            #redirect_to new_monster_fight_path(@monster), alert: @fight.errors.full_messages
         end
     end
 
