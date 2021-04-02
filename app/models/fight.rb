@@ -35,7 +35,18 @@ class Fight < ApplicationRecord
         !!monster ? monster.name : "Draw!"
     end
 
-
+    def self.battle_royale
+        @monsters = Monster.all.shuffle
+        @monsters.each_with_index do |monster, i|
+            if i.even? && (@monsters.last == monster)
+                #puts "no one for #{monster.name} to fight"
+            elsif i.odd?
+                fight = Fight.create(title: "Battle Royale", defender_id: monster.id, challenger_id: @monsters[i-1].id, location_id: Location.all.sample.id)
+                fight.attack
+                fight.save
+            end
+        end
+    end
 
 
 end

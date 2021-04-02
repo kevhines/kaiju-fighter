@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-<% fights && fights.each do |go| %>
+<% fights && fights.reverse.each do |go| %>
     <li><strong><%=go.title%>:</strong> <%=go.challenger.name%> vs  <%=go.defender.name%> <em>in <%=go.location.name%></em></li> 
     <li><strong>Winner:</strong> <%=go.winner_name%></li> 
 <% end %>
