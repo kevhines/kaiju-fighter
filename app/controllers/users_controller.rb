@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:index]
 
     def new
         @user = User.new
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
           session[:user_id] = @user.id
-          redirect_to root_path
+          redirect_to user_monsters_path(@user.id)
         else
           @errors = @user.errors.full_messages
           render :new

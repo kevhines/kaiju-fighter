@@ -1,2 +1,13 @@
-<h1>Static#home</h1>
-<p>Find me in app/views/static/home.html.erb</p>
+<h1>Kaiju Fighter</h1>
+<div class="row">
+<div class="col-7">
+<p>Welcome to <strong>Kaiju Fighter</strong>. Kaiju is a Japanese word for 'strange creature' but is generally considered to refer to Giant Monsters. You know, like <em>Godzilla</em> or <em>King Kong</em>. On this site you will create Kaiju and then set them to fight other Kaiju.</p>
+<p>If you are new to the site create a username by going to the <%=link_to "Sign Up Page", signup_path%>.</p>
+<p>Once you are logged in you can create some monsters. You can do that from your My Monsters page or the <%=link_to "All Monsters", monsters_path %> list page. Monsters just need a name and a size. You can set them as small as 5 stories high (a mere 50 feet) or as big as 80 stories (800 feet!).</p>
+<p>All Monsters start with 100 health. You can create fights from any Monster's page. If it's your monster you'll be asked to choose a defending monster. If you are starting a fight from another monster's page you'll need to choose which of your monster's is the challenger.</p>
+<p>You'll also need to decide where a fight is occuring. You can choose a previously created location or create one of your own when you are chooseing a location. Just like monster's, a location starts with 100 health.</p>
+<p>The winner of a fight is random, but bigger monsters, healthier monsters and monsters who have won recently all get an advantage in the fight randomizer. Sorry little Kaiju!</p>
+<p>If you lose a fight your health goes down a lot. If you win a fight your health goes down a little. The location that hosts the fight loses health. Any monster or location not involved in the fight slowly recovers.</p>
+<p>You can see all the <%=link_to "healthiest monsters", strongest_path%>  and <%=link_to "most wrecked locations", wrecked_path%> and the current <%=link_to "Monster Standings", standings_path%>.</p>
+<p>Finally: You can start a <%=link_to "Battle Royale", battle_path%>. Every monster will fight in random order, in random pre-existing locations. Try it out!</p>
+</div></div>

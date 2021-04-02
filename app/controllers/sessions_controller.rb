@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
           session[:user_id] = @user.id
-          redirect_to root_path
+          redirect_to user_monsters_path(@user.id)
         elsif @user
           @errors = ["Invalid Password"]
           render :new
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to user_monsters_path(user.id)
     else
       redirect_to signup_path
     end
