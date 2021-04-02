@@ -26,7 +26,7 @@ class MonstersController < ApplicationController
         if @monster.save
             redirect_to user_path(current_user)
         else
-            flash[:alert] = @monster.errors.full_messages
+            @errors = @monster.errors.full_messages
             render :new
         end
     end
@@ -36,7 +36,7 @@ class MonstersController < ApplicationController
         if @monster.update(monster_params)
             redirect_to user_path(current_user)
         else
-            flash[:alert] = @monster.errors.full_messages
+            @errors = @monster.errors.full_messages
             render :edit
         end
     end
@@ -61,5 +61,6 @@ class MonstersController < ApplicationController
 
     def set_monster
         @monster = Monster.find_by(id: params[:id])
-     end
+    end
+    
 end

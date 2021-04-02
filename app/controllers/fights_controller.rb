@@ -2,20 +2,13 @@ class FightsController < ApplicationController
 
     before_action :require_login
     before_action :set_monster, only: [:new, :create]
-  #  before_action :get_monsters, only: [:new, :create]
+    before_action :get_monsters, only: [:new]
 
     def index
         @fights = Fight.all
     end
 
     def new
-        if my_monster?(@monster) 
-            @fight = @monster.fights_challenged.build
-            @monsters = Monster.others(@monster.id)
-        else
-            @fight = @monster.fights_defended.build
-            @monsters = current_user.monsters
-        end
         @fight.location = Location.new
     end
 
@@ -32,7 +25,7 @@ class FightsController < ApplicationController
             @fight.attack
             redirect_to monster_path(@monster)
         else
-            flash[:alert] = @fight.errors.full_messages
+            @errors = @fight.errors.full_messages
             render :new
         end
     end
@@ -58,7 +51,13 @@ class FightsController < ApplicationController
     end
 
     def get_monsters
-    
+        if my_monster?(@monster) 
+            @fight = @monster.fights_challenged.build
+            @monsters = Monster.others(@monster.id)
+        else
+            @fight = @monster.fights_defended.build
+            @monsters = current_user.monsters
+        end
     end
 
 end

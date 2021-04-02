@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
        if @location.update(location_params)
             redirect_to location_path(@location)
         else
-            flash[:alert] = @location.errors.full_messages
+            @errors = @location.errors.full_messages
             render :edit
         end
     end
