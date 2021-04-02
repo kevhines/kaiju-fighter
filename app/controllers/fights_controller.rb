@@ -1,12 +1,14 @@
 class FightsController < ApplicationController
 
     before_action :require_login
+    before_action :set_monster, only: [:new, :create]
+  #  before_action :get_monsters, only: [:new, :create]
 
     def index
         @fights = Fight.all
     end
+
     def new
-        @monster = Monster.find_by(id: params[:monster_id])
         if my_monster?(@monster) 
             @fight = @monster.fights_challenged.build
             @monsters = Monster.others(@monster.id)
@@ -18,7 +20,7 @@ class FightsController < ApplicationController
     end
 
     def create
-        @monster = Monster.find_by(id: params[:monster_id])
+
         if my_monster?(@monster) 
             @fight = @monster.fights_challenged.build(fight_params)
             @monsters = Monster.others(@monster.id)
@@ -49,6 +51,14 @@ class FightsController < ApplicationController
 
     def fight_params
         params.require(:fight).permit(:title, :defender_id, :challenger_id, location_attributes: [:name])
+    end
+
+    def set_monster
+        @monster = Monster.find_by(id: params[:monster_id])
+    end
+
+    def get_monsters
+    
     end
 
 end
