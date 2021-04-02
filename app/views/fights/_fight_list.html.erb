@@ -1,9 +1,13 @@
-<ul class="list-unstyled">
+<table class="table table-striped">
+  <tbody>
 <% fights && fights.reverse.each do |go| %>
+    <tr><td><ul class="list-unstyled">
     <li><strong><%=go.title%>:</strong> <%=go.challenger.name%> vs  <%=go.defender.name%> <em>in <%=go.location.name%></em></li> 
     <li><strong>Winner:</strong> <%=go.winner_name%></li> 
+    </ul></td></tr>
 <% end %>
-</ul>
+</tbody>
+</table>
 
 
 

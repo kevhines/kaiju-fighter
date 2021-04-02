@@ -5,6 +5,7 @@
   <th scope="col">Health</th>
 </tr>
 </thead>
+<tbody>
 <%@locations.each do |location| %>
     <tr><td><%=link_to location.name, location_path(location) %></td><td><%=location.health%></td></tr>
 <%end%>
