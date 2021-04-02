@@ -2,6 +2,9 @@ class FightsController < ApplicationController
 
     before_action :require_login
 
+    def index
+        @fights = Fight.all
+    end
     def new
         @monster = Monster.find_by(id: params[:monster_id])
         if my_monster?(@monster) 

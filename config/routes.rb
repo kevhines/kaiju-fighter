@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :locations, except: [:create, :new, :destroy]
   root 'static#home'
 
+  resources :fights, only: [:index]
   resources :users, only: [:show]
   resources(:monsters, except: [:destroy]) do
     resources :fights, only: [:create, :new]

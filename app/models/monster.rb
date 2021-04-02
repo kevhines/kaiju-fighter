@@ -11,7 +11,7 @@ class Monster < ApplicationRecord
 
     before_save :size_check
 
-    scope :strongest, -> { where("health >= 80") }
+    scope :strongest, -> { where("health >= 70") }
     scope :strong_to_weak, -> { order('health DESC')}
 
     def size_check
