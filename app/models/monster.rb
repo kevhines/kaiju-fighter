@@ -8,6 +8,7 @@ class Monster < ApplicationRecord
     has_many :challengers, through: :fights_defended
 
     validates :name, presence: true
+    validates :size, presence: true
 
     before_save :size_check
 
@@ -49,7 +50,7 @@ class Monster < ApplicationRecord
             elsif monster.id == loser
                 monster.health = (monster.health - 20)/2
            else
-                monster.health = monster.health + 10
+                monster.health = monster.health + 8
             end
             monster.health = 1 if monster.health < 1
             monster.health = 100 if monster.health > 100

@@ -15,7 +15,7 @@ class Location < ApplicationRecord
             if location.id == battle_site
                 location.health = location.health/2
             else
-                location.health = location.health + 15
+                location.health = location.health + 12
             end
             location.health = 1 if location.health < 1
             location.health = 100 if location.health > 100

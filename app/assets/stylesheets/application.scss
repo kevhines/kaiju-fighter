@@ -25,6 +25,14 @@
     width: auto !important;
  }
 
+ .field_with_errors {
+    display: inline;
+  }
+
+ .field_with_errors input {
+    border-color: red;
+  }
+
  body {
     background-color: skyblue;
 }

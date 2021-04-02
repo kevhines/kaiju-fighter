@@ -21,21 +21,23 @@ class MonstersController < ApplicationController
 
 
     def create
-        monster = Monster.new(monster_params)
-        monster.user = current_user
-        if monster.save
+        @monster = Monster.new(monster_params)
+        @monster.user = current_user
+        if @monster.save
             redirect_to user_path(current_user)
         else
-            redirect_to new_monster_path, alert: monster.errors.full_messages
+            flash[:alert] = @monster.errors.full_messages
+            render :new
         end
     end
 
     def update
 
-        if monster.update(monster_params)
+        if @monster.update(monster_params)
             redirect_to user_path(current_user)
         else
-            redirect_to edit_monster_path(monster), alert: monster.errors.full_messages
+            flash[:alert] = @monster.errors.full_messages
+            render :new
         end
     end
 
