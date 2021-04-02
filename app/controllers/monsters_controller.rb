@@ -42,6 +42,7 @@ class MonstersController < ApplicationController
     end
 
     def edit
+        redirect_to monsters_path if !my_monster?(@monster)
     end
 
     def standings
