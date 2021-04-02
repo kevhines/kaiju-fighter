@@ -2,7 +2,7 @@ class FightsController < ApplicationController
 
     before_action :require_login
     before_action :set_monster, only: [:new, :create]
-    before_action :get_monsters, only: [:new]
+    before_action :get_monsters, only: [:new, :create]
 
     def index
         @fights = Fight.all
@@ -13,14 +13,6 @@ class FightsController < ApplicationController
     end
 
     def create
-
-        if my_monster?(@monster) 
-            @fight = @monster.fights_challenged.build(fight_params)
-            @monsters = Monster.others(@monster.id)
-        else
-            @fight = @monster.fights_defended.build(fight_params)
-            @monsters = current_user.monsters
-        end
         if @fight.save
             @fight.attack
             redirect_to monster_path(@monster)
@@ -52,11 +44,19 @@ class FightsController < ApplicationController
 
     def get_monsters
         if my_monster?(@monster) 
-            @fight = @monster.fights_challenged.build
+            @fight = build_fight("fights_challenged")
             @monsters = Monster.others(@monster.id)
         else
-            @fight = @monster.fights_defended.build
+            @fight = build_fight("fights_defended")
             @monsters = current_user.monsters
+        end
+    end
+
+    def build_fight(arg)
+        if params[:action] == "new"
+            @monster.send(arg).build
+        else
+            @monster.send(arg).build(fight_params)
         end
     end
 
