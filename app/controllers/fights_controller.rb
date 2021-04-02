@@ -28,7 +28,6 @@ class FightsController < ApplicationController
         end
         if @fight.save
             @fight.attack
-            @fight.save
             redirect_to monster_path(@monster)
         else
             flash[:alert] = @fight.errors.full_messages
