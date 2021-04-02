@@ -33,6 +33,16 @@ class FightsController < ApplicationController
         end
     end
 
+    def battle
+    end
+
+    def createbattle
+       title = params[:fight][:title]
+       Fight.battle_royale(title)
+       @fights = Fight.last(Monster.all.count / 2)
+       render :battle
+    end
+
     private
 
     def fight_params

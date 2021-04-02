@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/standings', to: "monsters#standings", as: "standings"
   get '/strongest', to: "monsters#strongest", as: "strongest"
   get '/wrecked', to: "locations#wrecked", as: "wrecked"
+  get '/battle', to: "fights#battle", as: "battle"
+  post '/battle', to: "fights#createbattle"
 
   #sign up and log in routes
   get '/signup', to: "users#new", as: "signup"

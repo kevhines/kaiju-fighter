@@ -1,0 +1,17 @@
+<h2>Battle Royale!</h2>
+
+<div class = "row">
+<%= form_for(:fight, url: battle_path) do |f| %>
+    <div class="col-6">
+    <div class="mb-3">
+    <%=f.label "Fight Title"%>
+    <%=f.text_field(:title)%>
+    </div>
+    <%=f.submit "Battle Royale", class: "btn btn-primary"%>
+    </div>
+<%end%>
+</div>
+
+<% if @fights %>
+<%= render partial: "fight_list", locals: {fights: @fights} %>
+<%end%>

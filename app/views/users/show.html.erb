@@ -6,7 +6,8 @@
 <div class="col"></div>
 </div>
 <br />
-<% if @monsters.nil? %>
+
+<% if @monsters.empty? %>
 You have no Monsters!
 <% else %>
 <%= render '/monsters/monster_list' %>
