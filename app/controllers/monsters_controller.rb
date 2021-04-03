@@ -24,7 +24,7 @@ class MonstersController < ApplicationController
         @monster = Monster.new(monster_params)
         @monster.user = current_user
         if @monster.save
-            redirect_to user_path(current_user)
+            redirect_to user_monsters_path(current_user)
         else
             @errors = @monster.errors.full_messages
             render :new
@@ -34,7 +34,7 @@ class MonstersController < ApplicationController
     def update
 
         if @monster.update(monster_params)
-            redirect_to user_path(current_user)
+            redirect_to user_monsters_path(current_user)
         else
             @errors = @monster.errors.full_messages
             render :edit
