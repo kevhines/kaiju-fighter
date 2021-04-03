@@ -25,7 +25,7 @@ class Fight < ApplicationRecord
     end
 
     def adjust_odds
-        odds_change = self.challenger.size - self.defender.size
+        odds_change = (self.challenger.size - self.defender.size)/2
         odds_change += 8  if self.challenger.all_fights.last.winner == self.challenger_id
         odds_change -= 8  if self.defender.all_fights.last.winner == self.defender_id
         odds_change
