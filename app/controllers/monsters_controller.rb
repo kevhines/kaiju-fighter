@@ -7,6 +7,8 @@ class MonstersController < ApplicationController
         if params[:user_id]
             user = User.find_by(id: params[:user_id])
             @monsters = user.monsters
+        elsif params[:search_size]
+            @monsters = Monster.search_size(params[:search_size])
         else
             @monsters = Monster.all
         end

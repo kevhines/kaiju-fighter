@@ -1,9 +1,6 @@
 # kaiju fighter - README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+A Monster fighter. Create monsters, give them stats and let them fight. Monsters that fight get hurt (as do the cities they fight in) and everyone else heals or rebuilds. Winning monsters get hurt less than losing monsters. Battle Royales randomly has every monster fight. Check out the standings!
 
 ## Summary
 
